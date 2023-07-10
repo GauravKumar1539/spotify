@@ -20,14 +20,13 @@ function App() {
     // console.log("gaurav",temp_token);
 
     if(temp_token){
+       // set access token 
+       spotify.setAccessToken(temp_token);
+
       dispatch({
         type:"SET-TOKEN",
         token: temp_token,
       })
-
-      // set access token 
-      spotify.setAccessToken(temp_token);
-
       // getMe return user
       spotify.getMe().then(_user => {
         dispatch({
@@ -35,7 +34,6 @@ function App() {
           user: _user,
         });
       })
-      
       spotify.getUserPlaylists().then((playlists) => {
         dispatch({
           type: "SET_PLAYLISTS",

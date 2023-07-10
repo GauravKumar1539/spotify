@@ -1,7 +1,9 @@
 // send the user to authenticate to spotify
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 
-const redirectUrl = "http://localhost:3000/";
+// const redirectUrl = "http://localhost:3000/";
+const redirectUrl = String(window.location.href);
+// const redirectUrl = "http://gauravkumar1539.github.io/spotify-app/";
 
 // 1. user is directed to spotify authorization page.Spotify takes care of the authorzation and redirects the user back to our app.
 
@@ -25,8 +27,8 @@ export const getToken = () => {
         initial[parts[0]]= decodeURIComponent(parts[1]);
         return initial;
     }, {});
-}
+};
 // "%20" is ascii code for space
 // this is the login url for spotify
-export const loginUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUrl}&scopes=${scopes.join("%20")}&response_type=token&show_dialog=true`;
+export const loginUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`;
 
